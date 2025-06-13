@@ -1,0 +1,270 @@
+{
+	"info": {
+		"_postman_id": "a970d8d6-da51-41dd-9f5e-72189300dafc",
+		"name": "Event Management API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28353711"
+	},
+	"item": [
+		{
+			"name": "createOrganizer",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"Abdul Mannan\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/eventmanagement-api/organizers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"eventmanagement-api",
+						"organizers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createEvent",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var now = new Date();\r",
+							"var formattedTimestamp = now.toISOString(); // Produces the exact format: YYYY-MM-DDTHH:mm:ss.sssZ\r",
+							"pm.environment.set(\"current_time\", formattedTimestamp);\r",
+							"\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Learning spring boot and rest apis\",\r\n    \"description\": \"The next role\",\r\n    \"startTime\": \"{{current_time}}\",\r\n    \"endTime\": \"{{current_time}}\",\r\n    \"zoneId\": \"US/Central\",\r\n    \"organizer\": \"/organizers/2\",\r\n    \"venue\": {\r\n        \"name\": \"Raichur INC\",\r\n        \"streetAddress\": \"12345\",\r\n        \"streetAddress2\": \"Behind Mumtaz function hall\",\r\n        \"city\": \"Austin\",\r\n        \"state\": \"Texas\",\r\n        \"country\": \"United states\",\r\n        \"postalCode\": \"77282\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/eventmanagement-api/events",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"eventmanagement-api",
+						"events"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updateEvents",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var now = new Date();\r",
+							"var formattedTimestamp = now.toISOString(); // Produces the exact format: YYYY-MM-DDTHH:mm:ss.sssZ\r",
+							"pm.environment.set(\"current_time\", formattedTimestamp);\r",
+							"\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"gRPC Inc.\",\r\n    \"description\": \"The next role\",\r\n    \"startTime\": \"{{current_time}}\",\r\n    \"endTime\": \"{{current_time}}\",\r\n    \"zoneId\": \"US/Central\",\r\n    \"organizer\": \"/organizers/2\",\r\n    \"venue\": {\r\n        \"name\": \"Mysore INC\",\r\n        \"streetAddress\": \"12345\",\r\n        \"streetAddress2\": \"Behind Mumtaz function hall\",\r\n        \"city\": \"Austin\",\r\n        \"state\": \"Texas\",\r\n        \"country\": \"United states\",\r\n        \"postalCode\": \"77282\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/eventmanagement-api/events/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"eventmanagement-api",
+						"events",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "partialUpdateEvents",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var now = new Date();\r",
+							"var formattedTimestamp = now.toISOString(); // Produces the exact format: YYYY-MM-DDTHH:mm:ss.sssZ\r",
+							"pm.environment.set(\"current_time\", formattedTimestamp);\r",
+							"\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"gRPC Inc.\",\r\n    \"description\": \"Oracle\",\r\n    \"startTime\": \"{{current_time}}\",\r\n    \"endTime\": \"{{current_time}}\",\r\n    \"zoneId\": \"US/Central\",\r\n    \"organizer\": \"/organizers/2\"\r\n   \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/eventmanagement-api/events/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"eventmanagement-api",
+						"events",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createParticipants",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var now = new Date();\r",
+							"var formattedTimestamp = now.toISOString(); // Produces the exact format: YYYY-MM-DDTHH:mm:ss.sssZ\r",
+							"pm.environment.set(\"current_time\", formattedTimestamp);\r",
+							"\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"John\",\r\n    \"email\": \"myemail@john.com\",\r\n    \"event\": \"/events/1\",\r\n    \"checkedIn\": \"true\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/eventmanagement-api/participants",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"eventmanagement-api",
+						"participants"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getEvents",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/eventmanagement-api/events",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"eventmanagement-api",
+						"events"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteEvent",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/eventmanagement-api/events/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"eventmanagement-api",
+						"events",
+						"3"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
