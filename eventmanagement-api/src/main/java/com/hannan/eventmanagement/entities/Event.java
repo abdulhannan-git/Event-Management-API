@@ -5,6 +5,8 @@ import java.time.ZonedDateTime;
 import java.util.Objects;
 import java.util.Set;
 
+import org.springframework.data.rest.core.annotation.RestResource;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -12,7 +14,6 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -34,6 +35,7 @@ public class Event extends AbstractEntity {
 	@OneToMany(mappedBy = "event", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
 	private Set<Participant> participants;
 	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@RestResource(exported = false)
 	private Venue venue;
 
 	@Override
@@ -44,6 +46,10 @@ public class Event extends AbstractEntity {
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
+	}
+
+	public Long getResouceId() {
+		return this.id;
 	}
 
 }
